@@ -27,6 +27,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 	const autoScrollBtnRef = useRef<HTMLButtonElement>(null);
 	const isAutoScrollingRef = useRef(false);
 	const cancelAutoScrollRef = useRef<(() => void) | null>(null);
+	const themeIsPinkRef = useRef(false);
 	const [showImages, setShowImages] = useState(false);
 	const [carouselIndex, setCarouselIndex] = useState<number | null>(null);
 	const imgSrcs = useCarouselImages();
@@ -206,18 +207,6 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 		const phase6End = vh * 3.5;
 		const phase7End = vh * 4.5;
 
-		// Reset auto-scroll button
-		// if ( pos < phase1End ) {
-		// 	autoScrollBtnRef.current?.classList.add('show');
-		// } else {
-		// 	autoScrollBtnRef.current?.classList.remove('show');
-		// }
-
-		// Phase 1: baby faces
-		
-
-
-
 		// Phase 1: move heart to center
 		const phase1Progress = Math.min(Math.max(pos / phase1End, 0), 1);
 		heartRef.current.style.top = `${originalPos + distance * phase1Progress}px`;
@@ -338,9 +327,15 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 		// Update Safari theme-color based on heart scale
 		const currentScale = parseFloat(heartRef.current.style.scale || '1');
-		const themeColorMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-		if (themeColorMeta) {
-			themeColorMeta.content = currentScale > 2.9 ? '#FFD4DB' : '#FEFAF1';
+		const shouldBePink = currentScale > 2.9;
+		if (shouldBePink !== themeIsPinkRef.current) {
+			themeIsPinkRef.current = shouldBePink;
+			const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+			if (meta) {
+				meta.content = shouldBePink ? '#FFD4DB' : '#FEFAF1';
+				meta.remove();
+				document.head.appendChild(meta);
+			}
 		}
 
 	}, []);
