@@ -8,11 +8,11 @@ import babyZeth from "../assets/images/baby-zeth.png";
 
 interface ScrollContainerProps {
 	scrollPosition: number;
-	scrollDirection: "up" | "down" | undefined;
-	scrollPercent: number;
+	// scrollDirection: "up" | "down" | undefined;
+	// scrollPercent: number;
 }
 
-export function ScrollContainer({ scrollPosition, scrollDirection, scrollPercent }: ScrollContainerProps) {
+export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 	const babyRef = useRef<HTMLDivElement>(null);
 	const introRef = useRef<HTMLHeadingElement>(null);
