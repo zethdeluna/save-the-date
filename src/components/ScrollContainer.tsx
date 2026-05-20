@@ -40,7 +40,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 			babyRef.current?.classList.add('show');
 
-		}, 500);
+		}, 1500);
 
 		return () => clearTimeout(timeout);
 
@@ -57,7 +57,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 			introRef.current?.classList.add('show');
 
-		}, 2000);
+		}, 3000);
 
 		return () => clearTimeout(timeout);
 
@@ -72,7 +72,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 			heartRef.current?.classList.add('peek');
 
-		}, 500);
+		}, 1500);
 
 		return () => clearTimeout(timeout);
 
@@ -83,7 +83,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 		const id = setTimeout(() => {
 			autoScrollBtnRef.current?.classList.add('show');
-		}, 2000);
+		}, 3000);
 
 		return () => clearTimeout(id);
 
