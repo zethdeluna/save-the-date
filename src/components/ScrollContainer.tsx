@@ -336,6 +336,13 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 		}
 
+		// Update Safari theme-color based on heart scale
+		const currentScale = parseFloat(heartRef.current.style.scale || '1');
+		const themeColorMeta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+		if (themeColorMeta) {
+			themeColorMeta.content = currentScale > 2.9 ? '#FFD4DB' : '#FEFAF1';
+		}
+
 	}, []);
 
 	useEffect(() => {
