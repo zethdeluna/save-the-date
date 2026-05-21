@@ -133,20 +133,17 @@ h6,
 }
 
 .scroll-container:has(.intro.show) .baby-faces [class*="baby"] {
-	top: calc(100% - 60px - 20px);
-	translate: 0 0;
+	scale: 1.2;
+	top: calc(50% + 24px);
+	translate: -50% -50%;
 }
 
 .scroll-container:has(.intro.show) .baby-faces .baby-steph {
-	left: 24px;
+	left: calc(50% - 30px - 40px);
 }
 
 .scroll-container:has(.intro.show) .baby-faces .baby-zeth {
-	left: calc(100% - 60px - 24px - 24px - 48px);
-}
-
-.scroll-container:has(.intro.show):not(:has(.auto-scroll-btn.show)) .baby-faces .baby-zeth {
-	left: calc(100% - 60px - 24px);
+	left: calc(50% + 30px + 40px);
 }
 
 .baby-faces img {
@@ -160,68 +157,161 @@ h6,
 	width: 60px;
 }
 
-.baby-faces p {
+.scroll-container:has(.intro.show) .baby-faces .baby-steph img {
+	animation: shake 0.75s ease 1.5s 1 forwards;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth img {
+	animation: shake 0.75s ease 2.5s 1 forwards;
+}
+
+@keyframes shake {
+	0%, 100% {
+		rotate: 0deg;
+	}
+	16%, 48%, 80% {
+		rotate: 8deg;
+	}
+	32%, 64% {
+		rotate: -8deg;
+	}
+}
+
+.baby-faces svg {
+	position: absolute;
+}
+
+.baby-faces svg path {
 	filter: blur(4px);
-	font-size: 14px;
 	opacity: 0;
 	pointer-events: none;
-	position: absolute;
 	scale: 0;
-	top: calc(50% - 12px);
 	transition: opacity 0.25s ease, filter 0.25s ease, scale 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.175);
-	translate: 0 -50%;
-	width: max-content;
 }
 
-.baby-faces .baby-steph p {
-	left: calc(100% + 12px);
-	rotate: -10deg;
+.baby-faces .baby-steph svg {
+	left: -24px;
+	rotate: -4deg;
+	top: -24px;
 }
 
-.baby-faces .baby-zeth p {
-	right: calc(100% + 8px);
-	rotate: 10deg;
+.baby-faces .baby-zeth svg {
+	bottom: -24px;
+	right: -24px;
 }
 
-.scroll-container:has(.intro.show) .baby-faces p {
+.scroll-container:has(.intro.show) .baby-faces svg path {
 	filter: none;
 	opacity: 1;
 	scale: 1;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-steph svg path:nth-child(1) {
 	transition-delay: 1.5s;
 }
 
-.scroll-container:has(.intro.show):not(:has(.auto-scroll-btn.show)) .baby-faces p,
+.scroll-container:has(.intro.show) .baby-faces .baby-steph svg path:nth-child(2) {
+	transition-delay: 1.6s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-steph svg path:nth-child(3) {
+	transition-delay: 1.7s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-steph svg path:nth-child(4) {
+	transition-delay: 1.8s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-steph svg path:nth-child(5) {
+	transition-delay: 1.9s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-steph svg path:nth-child(6) {
+	transition-delay: 2s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(1) {
+	transition-delay: 2.5s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(2) {
+	transition-delay: 2.6s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(3) {
+	transition-delay: 2.7s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(4) {
+	transition-delay: 2.8s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(5) {
+	transition-delay: 2.9s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(6) {
+	transition-delay: 3s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(7) {
+	transition-delay: 3.1s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(8) {
+	transition-delay: 3.2s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(9) {
+	transition-delay: 3.3s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(10) {
+	transition-delay: 3.4s;
+}
+
+.scroll-container:has(.intro.show) .baby-faces .baby-zeth svg path:nth-child(11) {
+	transition-delay: 3.5s;
+}
+
+/* .scroll-container:has(.intro.show):not(:has(.auto-scroll-btn.show)) .baby-faces p,
 .scroll-container:has(.floating-images[data-show="true"]) .baby-faces p {
 	filter: blur(4px);
 	opacity: 0;
 	scale: 0;
 	transition-delay: 0s;
-}
+} */
 
 .auto-scroll-btn {
 	aspect-ratio: 1;
 	background: unset;
 	border: unset;
 	border-radius: 100%;
-	bottom: 24px;
 	box-shadow: 0px 2px 8px 2px rgb(0 0 0 / 0.08);
 	cursor: pointer;
 	display: flex;
 	height: auto;
+	left: 50%;
 	opacity: 0;
 	padding: 0;
 	pointer-events: none;
 	position: fixed;
-	right: 24px;
 	text-align: center;
-	transition: opacity 0.5s ease;
-	width: 48px;
+	top: calc(50% + 160px);
+	transition: opacity 0.5s ease, scale 0.5s ease;
+	translate: -50% -50%;
+	width: 64px;
 	z-index: 3;
 }
 
 .auto-scroll-btn.show {
 	opacity: 1;
 	pointer-events: auto;
+}
+
+.auto-scroll-btn svg {
+	height: auto;
+	width: 100%;
 }
 
 .intro,
@@ -233,6 +323,10 @@ h6,
 	top: 50%;
 	transition: all 0.75s ease;
 	translate: -50% -50%;
+}
+
+.intro {
+	top: calc(50% - 120px);
 }
 
 .scroll-container:has(.coming-soon.show) .intro {
@@ -652,14 +746,6 @@ body:has(.image-carousel[data-active="true"]) {
 		left: calc(50% + 99px + 40px);
 	}
 
-	.baby-faces .baby-zeth p {
-		left: calc(100% - 16px);
-		right: unset;
-		rotate: -10deg;
-		top: -32px;
-		translate: 0 0;
-	}
-
 	.open-carousel.show {
 		opacity: 1;
 		pointer-events: auto;
@@ -714,7 +800,8 @@ body:has(.image-carousel[data-active="true"]) {
 	}
 
 	.scroll-container:has(.intro.show) .baby-faces [class*="baby"] {
-		top: calc(50% - 24px);
+		scale: 1;
+		top: calc(50% - 8px);
 		translate: -50% -50%;
 	}
 
@@ -727,18 +814,6 @@ body:has(.image-carousel[data-active="true"]) {
 		left: calc(50% + 30px + 16px);
 	}
 
-	.baby-faces .baby-steph p,
-	.baby-faces .baby-zeth p {
-		left: 50%;
-		top: calc(100% + 8px);
-		translate: -50% 0;
-	}
-
-	.baby-faces .baby-zeth p {
-		rotate: 10deg;
-		top: calc(100% + 10px);
-	}
-
 	.auto-scroll-btn {
 		bottom: unset;
 		left: 50%;
@@ -748,7 +823,7 @@ body:has(.image-carousel[data-active="true"]) {
 	}
 
 	.intro {
-		top: calc(50% - 100px);
+		top: calc(50% - 130px);
 	}
 
 	.intro,
@@ -827,7 +902,8 @@ body:has(.image-carousel[data-active="true"]) {
 @media (hover: hover) {
 
 	.auto-scroll-btn:hover {
-		opacity: 0.65;
+		opacity: 0.8;
+		scale: 1.1;
 	}
 
 	.floating-images .image-container:hover {

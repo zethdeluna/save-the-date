@@ -27,7 +27,6 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 	const autoScrollBtnRef = useRef<HTMLButtonElement>(null);
 	const isAutoScrollingRef = useRef(false);
 	const cancelAutoScrollRef = useRef<(() => void) | null>(null);
-	const themeIsPinkRef = useRef(false);
 	const [showImages, setShowImages] = useState(false);
 	const [carouselIndex, setCarouselIndex] = useState<number | null>(null);
 	const imgSrcs = useCarouselImages();
@@ -325,19 +324,6 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 		}
 
-		// Update Safari theme-color based on heart scale
-		const currentScale = parseFloat(heartRef.current.style.scale || '1');
-		const shouldBePink = currentScale > 2.9;
-		if (shouldBePink !== themeIsPinkRef.current) {
-			themeIsPinkRef.current = shouldBePink;
-			const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
-			if (meta) {
-				meta.content = shouldBePink ? '#FFD4DB' : '#FEFAF1';
-				meta.remove();
-				document.head.appendChild(meta);
-			}
-		}
-
 	}, []);
 
 	useEffect(() => {
@@ -365,12 +351,12 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 
 				<div className="baby-steph">
 					<img src={babySteph} alt="baby steph" />
-					<p>scroll!</p>
+					<SvgHelper name="arch-scroll" />
 				</div>
 
 				<div className="baby-zeth">
 					<img src={babyZeth} alt="baby zeth" />
-					<p>or click play</p>
+					<SvgHelper name="arch-or-click-play" />
 				</div>
 			
 			</div>
