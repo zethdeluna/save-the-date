@@ -61,11 +61,13 @@ export default function App() {
 		<div className="scroll-wrapper">
 			<LoadingScreen visible={!assetsLoaded} />
 			<div className="background-image" />
-			<ScrollContainer
-				scrollPosition={scrollPosition}
-				// scrollDirection={scrollDirection}
-				// scrollPercent={scrollPercent}
-			/>
+			{assetsLoaded && (
+				<ScrollContainer
+					scrollPosition={scrollPosition}
+					// scrollDirection={scrollDirection}
+					// scrollPercent={scrollPercent}
+				/>
+			)}
 		</div>
 	);
 }

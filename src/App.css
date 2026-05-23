@@ -744,6 +744,10 @@ body:has(.image-carousel[data-active="true"]) {
 
 /*** Loading Screen ***/
 
+body:has(.loading-screen) {
+	overflow: hidden;
+}
+
 .loading-screen {
 	align-items: center;
 	background: var(--floral-white);
