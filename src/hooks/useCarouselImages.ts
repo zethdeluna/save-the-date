@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const images = import.meta.glob('../assets/images/carousel/*.jpg');
+const images = import.meta.glob('../assets/images/carousel/*.webp');
 
 export function useCarouselImages(): string[] {
 	const [imgSrcs, setImgSrcs] = useState<string[]>([]);

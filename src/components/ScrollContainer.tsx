@@ -30,6 +30,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 	const [showImages, setShowImages] = useState(false);
 	const [carouselIndex, setCarouselIndex] = useState<number | null>(null);
 	const imgSrcs = useCarouselImages();
+	const floatingImgSrcs = imgSrcs.filter((_, i) => i % 2 === 0);
 
 	// Baby faces animation
 	useEffect(() => {
@@ -389,7 +390,7 @@ export function ScrollContainer({ scrollPosition }: ScrollContainerProps) {
 				RSVPs COMING SOON
 			</div>
 
-			<FloatingImages showImages={showImages} imgSrcs={imgSrcs} onImageClick={setCarouselIndex} />
+			<FloatingImages showImages={showImages} imgSrcs={floatingImgSrcs} onImageClick={i => setCarouselIndex(i * 2)} />
 			<ImageCarousel imgSrcs={imgSrcs} startIndex={carouselIndex} onClose={() => setCarouselIndex(null)} />
 
 			<button ref={openCarouselRef} className="open-carousel" onClick={() => setCarouselIndex(0)}>See our engagement photos</button>

@@ -507,8 +507,9 @@ h6,
 	pointer-events: none;
 	position: fixed;
 	top: 0;
-	transition: opacity 0.5s ease, filter 0.5s ease;
+	transition: opacity 0.5s ease, filter 0.5s ease, visibility 0.5s ease;
 	width: 100vw;
+	/* will-change: scale, opacity, filter; */
 	z-index: 1;
 }
 
@@ -537,8 +538,12 @@ h6,
 	scale: 0.9;
 	top: 100vh;
 	transition: scale 0.5s ease;
-	will-change: transform;
+	/* will-change: transform; */
 	z-index: inherit;
+}
+
+.floating-images .image-container:not([data-orientation]) {
+	visibility: hidden;
 }
 
 .floating-images[data-show="true"] .image-container {
@@ -561,15 +566,16 @@ h6,
 
 .floating-images .image-container[data-orientation="landscape"] {
 	aspect-ratio: 320 / 214;
-	width: 320px;
+	width: 240px;
 }
 
 .floating-images .image-container[data-orientation="portrait"] {
 	aspect-ratio: 200 / 300;
-	width: 200px;
+	width: 150px;
 }
 
-.floating-images .image-container img {
+.floating-images .image-container img,
+.floating-images .image-container picture {
 	cursor: pointer;
 	height: 100%;
 	object-fit: cover;

@@ -3,13 +3,15 @@ import { useState, useEffect, useRef } from "react";
 const SWIPE_THRESHOLD = 50;
 
 export function ImageCarousel({ imgSrcs, startIndex, onClose }: { imgSrcs: string[]; startIndex: number | null; onClose: () => void }) {
-	const [index, setIndex] = useState(0);
+	const [index, setIndex] = useState(startIndex ?? 0);
+	const [prevStartIndex, setPrevStartIndex] = useState(startIndex);
 	const dragStartX = useRef<number | null>(null);
 	const didDrag = useRef(false);
 
-	useEffect(() => {
+	if (startIndex !== prevStartIndex) {
+		setPrevStartIndex(startIndex);
 		if (startIndex !== null) setIndex(startIndex);
-	}, [startIndex]);
+	}
 
 	// Support arrows/escape keyboard buttons
 	useEffect(() => {
@@ -79,14 +81,12 @@ export function ImageCarousel({ imgSrcs, startIndex, onClose }: { imgSrcs: strin
 					onClick={handleClick}
 					style={{ touchAction: "pan-y", userSelect: "none" }}
 				>
-					{imgSrcs.map((src, i) => (
-						<div key={src} className="image-container" data-active={i === index}>
-							<img
-								src={src}
-								alt=""
-								loading="lazy"
-								draggable={false}
-							/>
+					{[...new Set([(index - 1 + imgSrcs.length) % imgSrcs.length, index, (index + 1) % imgSrcs.length])].map(idx => (
+						<div key={idx} className="image-container" data-active={idx === index}>
+							<picture>
+								<source srcSet={imgSrcs[idx]} type="image/webp" />
+								<img src={imgSrcs[idx]} alt="" loading="lazy" draggable={false} />
+							</picture>
 						</div>
 					))}
 				</div>

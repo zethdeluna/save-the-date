@@ -15,19 +15,19 @@ export function FloatingImages({ showImages, imgSrcs, onImageClick }: { showImag
 		// Divide viewport into n slots; place each image in its own slot with jitter
 		// Reserve 340px on the right so even landscape images (320px) stay on screen
 		const availableWidth = Math.max(window.innerWidth - 80, 0);
-		const slotWidth = availableWidth / n;
+		const slotWidth = (availableWidth / n) * 1.1;
 
 		return imgSrcs.map((_, i) => {
-			const left = i * slotWidth + seededRandom(i * 3) * slotWidth;
-			const duration = 12 + seededRandom(i * 7) * 7;        // 8–15 s
-			const delay = -(seededRandom(i * 11) * duration);     // random phase offset
+			const left = i * slotWidth + seededRandom(i * 8) * slotWidth;
+			const duration = 12 + seededRandom(i * 10) * 7;
+			const delay = -(seededRandom(i * 15) * duration);
 			const rotation = (seededRandom(i * 13) - 0.5) * 10;  // –5° to +5°
 
 			return {
 				left: `${left.toFixed(1)}px`,
 				animationDuration: `${duration.toFixed(1)}s`,
 				animationDelay: `${delay.toFixed(1)}s`,
-				'--rotation': `${rotation.toFixed(1)}deg`,
+				'--rotation': `${rotation.toFixed(1)}deg`
 			} as React.CSSProperties;
 		});
 	}, [imgSrcs]);

@@ -31,8 +31,11 @@ export function ImageCard ({ src, style, onClick }: { src: string; style?: React
 	const { ref, orientation } = useImageOrientation();
 
 	return (
-		<button className="image-container" data-orientation={orientation} style={style} onClick={onClick}>
-			<img ref={ref} src={src} alt="" loading="lazy" />
+		<button className="image-container" data-orientation={orientation} style={style} onClick={onClick} aria-label={"image-"+src}>
+			<picture>
+				<source srcSet={src} type="image/webp" />
+				<img ref={ref} src={src} alt="" loading="lazy" />
+			</picture>
 		</button>
 	);
 
