@@ -742,6 +742,93 @@ body:has(.image-carousel[data-active="true"]) {
 	z-index: 3;
 }
 
+/*** Loading Screen ***/
+
+.loading-screen {
+	align-items: center;
+	background: var(--floral-white);
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	inset: 0;
+	justify-content: center;
+	opacity: 1;
+	pointer-events: all;
+	position: fixed;
+	transition: opacity 0.5s ease;
+	z-index: 1000;
+}
+
+.loading-screen.fade-out {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.loading-hearts {
+	display: flex;
+	gap: 12px;
+}
+
+.loading-hearts svg {
+	width: 20px;
+}
+
+.loading-hearts svg:nth-child(1) {
+	animation: loading-1 3s ease 0s infinite;
+}
+
+.loading-hearts svg:nth-child(2) {
+	animation: loading-2 3s ease 0s infinite;
+}
+
+.loading-hearts svg:nth-child(3) {
+	animation: loading-3 3s ease 0s infinite;
+}
+
+@keyframes loading-1 {
+	0%, 100% {
+		opacity: 0;
+	}
+	20%, 80% {
+		opacity: 1;
+	}
+}
+
+@keyframes loading-2 {
+	0%, 20%, 100% {
+		opacity: 0;
+	}
+	40%, 80% {
+		opacity: 1;
+	}
+}
+
+@keyframes loading-3 {
+	0%, 40%, 100% {
+		opacity: 0;
+	}
+	60%, 80% {
+		opacity: 1;
+	}
+}
+
+/* .loading-heart {
+	animation: loading-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes loading-pulse {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(1.15); }
+} */
+
+.loading-text {
+	font-family: var(--sans-font);
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
 @media (max-width: 950px) {
 
 	.baby-faces .baby-steph {

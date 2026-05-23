@@ -1,0 +1,31 @@
+import { useState } from 'react';
+
+interface LoadingScreenProps {
+	visible: boolean;
+}
+
+export function LoadingScreen({ visible }: LoadingScreenProps) {
+	const [unmounted, setUnmounted] = useState(false);
+
+	if (unmounted) return null;
+
+	return (
+		<div
+			className={`loading-screen${visible ? '' : ' fade-out'}`}
+			onTransitionEnd={() => { if (!visible) setUnmounted(true); }}
+		>
+			<div className="loading-hearts">
+				<svg width="52" height="46" viewBox="0 0 270 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M127.09 29.0259L135 39.9304L142.91 29.0259C156.094 10.7991 177.293 0 199.811 0C238.57 0 270 31.3964 270 70.1152V71.4848C270 130.59 196.225 199.23 157.729 228.572C151.189 233.524 143.174 236 135 236C126.826 236 118.758 233.577 112.271 228.572C73.7754 199.23 0 130.59 0 71.4848V70.1152C0 31.3964 31.4297 0 70.1895 0C92.707 0 113.906 10.7991 127.09 29.0259Z" fill="#FFD4DB"/>
+				</svg>
+				<svg width="52" height="46" viewBox="0 0 270 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M127.09 29.0259L135 39.9304L142.91 29.0259C156.094 10.7991 177.293 0 199.811 0C238.57 0 270 31.3964 270 70.1152V71.4848C270 130.59 196.225 199.23 157.729 228.572C151.189 233.524 143.174 236 135 236C126.826 236 118.758 233.577 112.271 228.572C73.7754 199.23 0 130.59 0 71.4848V70.1152C0 31.3964 31.4297 0 70.1895 0C92.707 0 113.906 10.7991 127.09 29.0259Z" fill="#FFD4DB"/>
+				</svg>
+				<svg width="52" height="46" viewBox="0 0 270 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M127.09 29.0259L135 39.9304L142.91 29.0259C156.094 10.7991 177.293 0 199.811 0C238.57 0 270 31.3964 270 70.1152V71.4848C270 130.59 196.225 199.23 157.729 228.572C151.189 233.524 143.174 236 135 236C126.826 236 118.758 233.577 112.271 228.572C73.7754 199.23 0 130.59 0 71.4848V70.1152C0 31.3964 31.4297 0 70.1895 0C92.707 0 113.906 10.7991 127.09 29.0259Z" fill="#FFD4DB"/>
+				</svg>
+			</div>
+			<p className="loading-text">Zeth + Steph</p>
+		</div>
+	);
+}
